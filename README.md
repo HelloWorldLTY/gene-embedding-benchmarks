@@ -14,3 +14,4 @@ get started by creating and activating the virtual environment.
  conda env create -f env.yml
  conda activate gene_benchmark 
  ```
+## Citation

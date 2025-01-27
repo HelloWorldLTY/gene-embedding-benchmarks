@@ -1,0 +1,28 @@
+DOID:0014667	disease of metabolism
+DOID:0050155	sensory system disease
+DOID:0050177	monogenic disease
+DOID:0060071	pre-malignant neoplasm
+DOID:0060072	benign neoplasm
+DOID:0060118	thoracic disease
+DOID:0080014	chromosomal disease
+DOID:0080015	physical disorder
+DOID:0080577	polygenic disease
+DOID:104	bacterial infectious disease
+DOID:1287	cardiovascular system disease
+DOID:1398	parasitic infectious disease
+DOID:15	reproductive system disease
+DOID:150	disease of mental health
+DOID:1564	fungal infectious disease
+DOID:1579	respiratory system disease
+DOID:16	integumentary system disease
+DOID:162	cancer
+DOID:17	musculoskeletal system disease
+DOID:18	urinary system disease
+DOID:225	syndrome
+DOID:28	endocrine system disease
+DOID:2914	immune system disease
+DOID:331	central nervous system disease
+DOID:574	peripheral nervous system disease
+DOID:74	hematopoietic system disease
+DOID:77	gastrointestinal system disease
+DOID:934	viral infectious disease

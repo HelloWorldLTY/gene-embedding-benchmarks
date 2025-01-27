@@ -7,8 +7,10 @@ This repo is organized into several sections, part of which is stored on zenodo.
 - `src`: contains the code used for related tasks to preprocess the embeddings and benchmakr them across our three main functional prediction tasks
 
 ## Installation
-To install the required dependencies for the project, use `pip` to install the dependencies listed in the `requirements.txt` file. Ensure that your Python version is 3.8 or higher.
-```bash
-pip install -r requirements.txt
-```
-The requirements.txt file includes all necessary dependencies, which will be installed automatically when you run the above command.
+We recommend using conda for installing all necessary packages. Once conda is installed 
+get started by creating and activating the virtual environment.
+
+ ```bash
+ conda env create -f env.yml
+ conda activate flambe
+ ```

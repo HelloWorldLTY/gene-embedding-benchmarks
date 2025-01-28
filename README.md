@@ -1,12 +1,12 @@
 # Benchmarking gene embeddings from sequence, expression, network, and text models for functional prediction tasks
-This repository contains code and datasets for benchmarking 38 gene embedding methods across individual gene attributes, paired gene interactions, and gene set relationships.
+This repository contains code and datasets for benchmarking gene embedding methods across individual gene attributes, paired gene interactions, and gene set relationships.
 
 ## About
 Gene embeddings have emerged as transformative tools in computational biology, enabling the efficient translation of complex biological datasets into compact vector representations. This study presents a comprehensive benchmark by evaluating 38 classic and state-of-the-art gene embedding methods across a spectrum of functional prediction tasks. These embeddings, derived from data sources such as amino acid sequences, gene expression profiles, protein-protein interaction networks, and biomedical literature, are assessed for their performance in predicting individual gene attributes, paired gene interactions, and gene set relationships. Our analysis reveals that biomedical literature-based embeddings consistently excel in general predictive tasks, amino acid sequence embeddings outperform in functional and genetic interaction predictions, and gene expression embeddings are particularly well-suited for disease-related tasks. Importantly, we find that the type of training data has a greater influence on performance than the specific embedding construction method, with embedding dimensionality having only minimal impact. By elucidating the strengths and limitations of various gene embeddings, this work provides guidance for selecting and successfully leveraging gene embeddings for downstream biological prediction tasks.
 
 ## Organization
 This repo is organized into several sections, part of which is stored on zenodo.
-- `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes fold and holdout splits
+- `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes the fold and holdout splits that we used in our tests
 - `data`: contains datasets and metadata used for benchmarking
   - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)
   - `gmt`: gene set files used for benchmarking 

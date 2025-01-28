@@ -27,7 +27,7 @@ get started by creating and activating the virtual environment.
  conda env create -f env.yml
  conda activate gene_embed_benchmark 
  ```
- To run the gene set benchmarks, first clone the necessary repository:
+ To run the gene set benchmarks, first dowload the ANDES tool:
 ```bash 
 git clone https://github.com/ylaboratory/ANDES.git
 ```

@@ -7,27 +7,31 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 # Paths
-MOD_PATH = 'data/embeddings/raw/'
-INTERSECT_PATH = 'data/embeddings/intersect/'
-META_FILE = 'data/embed_meta.csv'
+MOD_PATH = "data/embeddings/raw/"
+INTERSECT_PATH = "data/embeddings/intersect/"
+META_FILE = "data/embed_meta.csv"
 RESULTS_PATH = "results/plots/"
 os.makedirs(RESULTS_PATH, exist_ok=True)
+
 
 # Collect gene sets from raw embedding data
 def collect_gene_sets(mod_path):
     genes_dict = {}
-    subdirs = [d for d in os.listdir(mod_path) if os.path.isdir(os.path.join(mod_path, d))]
-    
+    subdirs = [
+        d for d in os.listdir(mod_path) if os.path.isdir(os.path.join(mod_path, d))
+    ]
+
     for subdir in subdirs:
         subdir_path = os.path.join(mod_path, subdir)
-        txt_files = [f for f in os.listdir(subdir_path) if f.endswith('.txt')]
-        
+        txt_files = [f for f in os.listdir(subdir_path) if f.endswith(".txt")]
+
         if txt_files:
             txt_path = os.path.join(subdir_path, txt_files[0])
-            with open(txt_path, 'r') as f:
+            with open(txt_path, "r") as f:
                 genes = set(line.strip() for line in f if line.strip())
                 genes_dict[subdir] = genes
     return genes_dict
+
 
 # Compute Jaccard matrix
 def compute_jaccard_matrix(genes_dict):
@@ -44,6 +48,7 @@ def compute_jaccard_matrix(genes_dict):
 
     return pd.DataFrame(jaccard_matrix, index=subdirs, columns=subdirs)
 
+
 # Plot heatmap
 def plot_heatmap(data, title, output_file):
     plt.figure(figsize=(8, 6))
@@ -52,6 +57,7 @@ def plot_heatmap(data, title, output_file):
     plt.savefig(output_file, format="pdf", bbox_inches="tight")
     plt.show()
 
+
 # Process intersect folder for embeddings and gene lists
 def process_intersect(intersect_path):
     subfolders = [f.path for f in os.scandir(intersect_path) if f.is_dir()]
@@ -59,17 +65,18 @@ def process_intersect(intersect_path):
     embeddings = {}
 
     for subfolder in subfolders:
-        gene_txt_files = glob.glob(os.path.join(subfolder, '*.txt'))
+        gene_txt_files = glob.glob(os.path.join(subfolder, "*.txt"))
         if gene_txt_files:
-            with open(gene_txt_files[0], 'r') as f:
+            with open(gene_txt_files[0], "r") as f:
                 genes = [line.strip() for line in f]
             gene_lists[subfolder] = genes
 
-        csv_files = glob.glob(os.path.join(subfolder, '*.csv'))
+        csv_files = glob.glob(os.path.join(subfolder, "*.csv"))
         if csv_files:
             embeddings[subfolder] = pd.read_csv(csv_files[0], header=None)
 
     return gene_lists, embeddings
+
 
 # Align embeddings to the master gene list
 def align_embeddings(gene_lists, embeddings):
@@ -79,8 +86,9 @@ def align_embeddings(gene_lists, embeddings):
     for subfolder, embedding in embeddings.items():
         embedding.index = gene_lists[subfolder]
         embeddings_aligned[subfolder] = embedding.reindex(master_gene_list)
-    
+
     return embeddings_aligned
+
 
 # Compute weighted Jaccard similarity
 def compute_weighted_jaccard(scaled_correlation_vectors):
@@ -98,15 +106,19 @@ def compute_weighted_jaccard(scaled_correlation_vectors):
             weighted_jaccard_matrix[i, j] = wj_sim
             weighted_jaccard_matrix[j, i] = wj_sim
 
-    return pd.DataFrame(weighted_jaccard_matrix, index=subfolder_names, columns=subfolder_names)
+    return pd.DataFrame(
+        weighted_jaccard_matrix, index=subfolder_names, columns=subfolder_names
+    )
+
 
 # Clean subfolder names
-def clean_subfolder_name(name, base_path='data/embeddings/intersect/', suffix=''):
+def clean_subfolder_name(name, base_path="data/embeddings/intersect/", suffix=""):
     if name.startswith(base_path):
-        name = name[len(base_path):]
+        name = name[len(base_path) :]
     if name.endswith(suffix):
-        name = name[:-len(suffix)]
+        name = name[: -len(suffix)]
     return name
+
 
 if __name__ == "__main__":
     # Collect gene sets
@@ -115,7 +127,11 @@ if __name__ == "__main__":
 
     # Compute Jaccard matrix
     jaccard_df = compute_jaccard_matrix(genes_dict)
-    plot_heatmap(jaccard_df, "Jaccard Index of Genes Heatmap", f"{RESULTS_PATH}/jaccard_index_of_genes.pdf")
+    plot_heatmap(
+        jaccard_df,
+        "Jaccard Index of Genes Heatmap",
+        f"{RESULTS_PATH}/jaccard_index_of_genes.pdf",
+    )
     print("Jaccard heatmap plotted.")
 
     # Process intersect folder
@@ -124,7 +140,7 @@ if __name__ == "__main__":
 
     # Compute correlation matrices and weighted Jaccard
     gene_correlation_matrices = {
-        subfolder: embedding.transpose().corr(method='pearson').fillna(0)
+        subfolder: embedding.transpose().corr(method="pearson").fillna(0)
         for subfolder, embedding in embeddings_aligned.items()
     }
 
@@ -139,5 +155,9 @@ if __name__ == "__main__":
     # Clean names and plot
     wj_sim_df_clean.index = wj_sim_df_clean.index.map(clean_subfolder_name)
     wj_sim_df_clean.columns = wj_sim_df_clean.columns.map(clean_subfolder_name)
-    plot_heatmap(wj_sim_df_clean, "Weighted Jaccard Similarity of Gene Correlations", f"{RESULTS_PATH}/summary_weighted_heatmap.pdf")
+    plot_heatmap(
+        wj_sim_df_clean,
+        "Weighted Jaccard Similarity of Gene Correlations",
+        f"{RESULTS_PATH}/summary_weighted_heatmap.pdf",
+    )
     print("Weighted Jaccard heatmap plotted.")

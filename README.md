@@ -6,7 +6,7 @@ Gene embeddings have emerged as transformative tools in computational biology, e
 
 ## Organization
 This repo is organized into several sections, part of which is stored on zenodo.
-- `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes the fold and holdout splits that we used in our tests
+- `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes the fold and holdout splits that we used in our tests saved as pkl files
 - `data`: contains datasets and metadata used for benchmarking
   - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)
   - `gmt`: gene set files used for benchmarking 

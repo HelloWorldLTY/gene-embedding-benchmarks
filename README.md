@@ -5,6 +5,7 @@ This repository contains code and datasets for benchmarking 38 gene embedding me
 This repo is organized into several sections, part of which is stored on zenodo.
 - `data`: contains datasets and metadata used for benchmarking
 - `src`: contains the code used for related tasks to preprocess the embeddings and benchmark them across our three main functional prediction tasks
+
 The data section is further divided into sections:
 - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)
 - `gmt`: gene set files used for benchmarking 

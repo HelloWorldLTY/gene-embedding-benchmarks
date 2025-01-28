@@ -21,7 +21,7 @@ This repo is organized into several sections, part of which is stored on zenodo.
   - `gene_level_benchmark`: code used for benchmarking disease gene prediction (OMIM) and gene function prediction (GO).
   - `gene_pair_benchmark`: code used for benchmarking genetic interaction (e.g., SL/NG) and transcription factor target (TF) prediction.
   - `gene_set_benchmark`: code used for benchmarking matching pathways (GO/KEGG) and disease/tissue (OMIM/Brenda).
-  - `preprocess`: code used for preprocessing embeddings
+  - `preprocess_embedding`: code used for preprocessing embeddings
   - `summary.py`: code used for summarizing the tested embeddings
 
 

@@ -12,6 +12,7 @@ This repo is organized into several sections, part of which is stored on zenodo.
   - `gmt`: gene set files used for benchmarking 
   - `matched_pairs`: files used to map one annotation to another
   - `obo`: ontology files for hierarchical biological relationships
+  - `paired_gene_interaction_data`: files used for benchmarking paired genetic interactions (on zenodo)
   - `slim_sets`: subsets of annotation terms
   - `embed_meta.csv`: metadata file detailing the embedding methods, their training input type, algorithm, and dimension.
 - `results`: contains the results of the gene level and gene pair benchmarking experiments

@@ -2,13 +2,13 @@ import os
 import subprocess
 from datetime import datetime
 
-embed_path = 'PATH TO YOUR EMBEDDING FOLDER'
-andes_script = 'andes.pyt' 
-geneset1 = 'bto_specific.gmt'
-geneset2 = 'omim_entrez.gmt'
-andes_out_path = 'OUT PATH'
+embed_path = 'data/embeddings/intersect'
+andes_script = 'ANDES/src/andes.py' 
+geneset1 = 'data/gmt/KEGG_CPDB.gmt' # 'data/gmt/bto_specific.gmt'
+geneset2 = 'data/gmt/hsa_low_eval_BP_propagated.gmt' # 'data/gmt/omim_entrez.gmt'
+andes_out_path = 'results/andes_out'
 status_log = 'andes_status.txt'
-matched_pairs_file = 'matched_list_bto_doid.txt'
+matched_pairs_file = 'data/matched_pairs/matched_pair_kegg_go.txt' # data/matched_pairs/matched_list_bto_doid.txt 
 
 if not os.path.exists(andes_out_path):
     os.makedirs(andes_out_path)

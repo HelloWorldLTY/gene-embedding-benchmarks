@@ -20,7 +20,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 
-def get_embeddings(folder_path = '/data/embeddings/intersect'):
+def get_embeddings(folder_path = 'data/embeddings/intersect'):
 
     subfolders = [f.path for f in os.scandir(folder_path) if f.is_dir()]
 
@@ -562,7 +562,7 @@ def plot_scatter(holdout_auc_df):
     plt.title("DOID Holdout Prediction AUC", fontsize=16)
     plt.grid(True)
 
-    plt.savefig("plots/omim_holdout.pdf", format="pdf", bbox_inches="tight")
+    plt.savefig("results/plots/omim_holdout.pdf", format="pdf", bbox_inches="tight")
 
     plt.show()
 
@@ -684,7 +684,7 @@ def plot_slim_clustermap(
     g.ax_heatmap.set_xlabel('DOID Terms', fontsize=14)
     g.ax_heatmap.set_ylabel('Embeddings', fontsize=14)
 
-    plt.savefig(f"plots/omim/{title}_clustermap.pdf", format="pdf", bbox_inches="tight")
+    plt.savefig(f"results/plots/omim/{title}_clustermap.pdf", format="pdf", bbox_inches="tight")
 
     df_melted = df.reset_index().melt(
         id_vars='index', 
@@ -716,6 +716,6 @@ def plot_slim_clustermap(
     else:
         plt.legend('', frameon=False)
 
-    plt.savefig(f"plots/omim/{title}_boxplot.pdf", format="pdf", bbox_inches="tight")
+    plt.savefig(f"results/plots/omim/{title}_boxplot.pdf", format="pdf", bbox_inches="tight")
 
     return g

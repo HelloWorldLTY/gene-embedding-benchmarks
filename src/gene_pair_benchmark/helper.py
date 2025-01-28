@@ -8,7 +8,7 @@ from sklearn.svm import SVC
 import numpy as np 
 import time
 
-def load_embeddings(folder_path = '/embeddings/intersected/'):
+def load_embeddings(folder_path = 'data/embeddings/intersect'):
 
     subfolders = [f.path for f in os.scandir(folder_path) if f.is_dir()]
     # dict of embeddings and gene list 

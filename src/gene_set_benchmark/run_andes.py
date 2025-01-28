@@ -2,7 +2,9 @@ import os
 import subprocess
 from datetime import datetime
 
-embed_path = 'data/embeddings/intersect'
+# change file name/path (that are commented out) based on disease-tissue vs kegg-go task 
+
+embed_path = 'data/embeddings/intersect' 
 andes_script = 'ANDES/src/andes.py' 
 geneset1 = 'data/gmt/KEGG_CPDB.gmt' # 'data/gmt/bto_specific.gmt'
 geneset2 = 'data/gmt/hsa_low_eval_BP_propagated.gmt' # 'data/gmt/omim_entrez.gmt'

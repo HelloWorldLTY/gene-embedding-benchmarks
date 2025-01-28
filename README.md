@@ -1,10 +1,10 @@
 # Benchmarking gene embeddings from sequence, expression, network, and text models for functional prediction tasks
-This repository contains code and datasets for benchmarking 38 gene embedding methods across functional prediction tasks, including gene attribute, interaction, and set relationship predictions, using data from amino acid sequences, gene expression, PPI networks, and biomedical literature.
+This repository contains code and datasets for benchmarking 38 gene embedding methods across individual gene attributes, paired gene interactions, and gene set relationships.
 
 ## Organization
 This repo is organized into several sections, part of which is stored on zenodo.
 - `data`: contains datasets and metadata used for benchmarking
-- `src`: contains the code used for related tasks to preprocess the embeddings and benchmark them across our three main functional prediction tasks
+- `src`: contains the code used for preprocessing, summarizing, and benchmarking embeddings across our functional prediction tasks
 
 The data section is further divided into sections:
 - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)

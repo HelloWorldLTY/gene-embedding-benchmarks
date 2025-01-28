@@ -38,4 +38,16 @@ git clone https://github.com/ylaboratory/ANDES.git
 ```
 Make sure to navigate to the appropriate directory and follow any additional instructions provided in the [ANDES repository](https://github.com/ylaboratory/ANDES) for setting up and running the tool.
 
+Each folder in the `src` directory contains either a Python (.py) or Jupyter Notebook (.ipynb) file that corresponds to a specific benchmark or analysis. TThese scripts not only run the benchmarks but also generate plots, which are saved in the `results` folder. To execute the scripts, use the following commands:
+
+For Python files:
+```bash
+python path_to_script/script_name.py
+```
+For Jupyter Notebooks, open them in a Jupyter environment:
+```bash
+jupyter notebook path_to_script/script_name.ipynb
+```
+Most of the scripts rely on their corresponding helper.py file, which contains helper functions used throughout the analyses. 
+
 ## Citation

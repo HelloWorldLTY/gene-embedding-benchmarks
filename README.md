@@ -18,6 +18,6 @@ get started by creating and activating the virtual environment.
 ```bash 
 git clone https://github.com/ylaboratory/ANDES.git
 ```
-Make sure to navigate to the appropriate directory and follow any additional instructions provided in the ANDES repository for setting up and running the tool.
+Make sure to navigate to the appropriate directory and follow any additional instructions provided in the [ANDES repository](https://github.com/ylaboratory/ANDES) for setting up and running the tool.
 
 ## Citation

@@ -9,6 +9,8 @@ This repo is organized into several sections, part of which is stored on zenodo.
 - `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes the fold and holdout splits that we used in our tests saved as pkl files
 - `data`: contains datasets and metadata used for benchmarking
   - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)
+    - `intersect`: preprocessed embeddings for genes that are common across all methods in entrez gene format
+    - `all_genes`: preprocessed embeddings that contain all genes in entrez gene format
   - `gmt`: gene set files used for benchmarking 
   - `matched_pairs`: files used to map one annotation to another
   - `obo`: ontology files for hierarchical biological relationships

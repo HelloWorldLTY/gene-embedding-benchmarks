@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 # Paths
-MOD_PATH = "data/embeddings/raw/"
+MOD_PATH = "data/embeddings/all_genes/"
 INTERSECT_PATH = "data/embeddings/intersect/"
 META_FILE = "data/embed_meta.csv"
 RESULTS_PATH = "results/plots/"

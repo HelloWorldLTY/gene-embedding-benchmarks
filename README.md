@@ -1,26 +1,55 @@
-# proj-template
-simple template for ylab projects
+# Benchmarking gene embeddings from sequence, expression, network, and text models for functional prediction tasks
+This repository contains code and datasets for benchmarking gene embedding methods across individual gene attributes, paired gene interactions, and gene set relationships.
 
-This repo includes a basic `.gitignore` with common files to exclude, but this should obviously be pared down / additional files should be added as necessary.
+## About
+Gene embeddings have emerged as transformative tools in computational biology, enabling the efficient translation of complex biological datasets into compact vector representations. This study presents a comprehensive benchmark by evaluating 38 classic and state-of-the-art gene embedding methods across a spectrum of functional prediction tasks. These embeddings, derived from data sources such as amino acid sequences, gene expression profiles, protein-protein interaction networks, and biomedical literature, are assessed for their performance in predicting individual gene attributes, paired gene interactions, and gene set relationships. Our analysis reveals that biomedical literature-based embeddings consistently excel in general predictive tasks, amino acid sequence embeddings outperform in functional and genetic interaction predictions, and gene expression embeddings are particularly well-suited for disease-related tasks. Importantly, we find that the type of training data has a greater influence on performance than the specific embedding construction method, with embedding dimensionality having only minimal impact. By elucidating the strengths and limitations of various gene embeddings, this work provides guidance for selecting and successfully leveraging gene embeddings for downstream biological prediction tasks.
 
-There is also support for [super-linter](https://github.com/github/super-linter) as a [GitHub action](https://docs.github.com/en/free-pro-team@latest/actions), which essentially just means that all code will be automatically linted on push / when PRs are opened. Make sure all checks pass!
+## Organization
+This repo is organized into several sections, part of which is stored on zenodo.
+- `bin`: contains binaries and intermediate files from the benchmarking experiments, which includes the fold and holdout splits that we used in our tests saved as pkl files
+- `data`: contains datasets and metadata used for benchmarking
+  - `embeddings`: preprocessed embeddings for genes from various methods (on zenodo)
+    - `intersect`: preprocessed embeddings for genes that are common across all methods in entrez gene format
+    - `all_genes`: preprocessed embeddings that contain all genes in entrez gene format
+  - `gmt`: gene set files used for benchmarking 
+  - `matched_pairs`: files used to map one annotation to another
+  - `obo`: ontology files for hierarchical biological relationships
+  - `paired_gene_interaction_data`: files used for benchmarking paired genetic interactions (on zenodo)
+  - `slim_sets`: subsets of annotation terms
+  - `embed_meta.csv`: metadata file detailing the embedding methods, their training input type, algorithm, and dimension.
+- `results`: contains the results of the gene level and gene pair benchmarking experiments
+  - `andes_results`: contains the scores from the gene set benchmarks (on zenodo)
+- `src`: contains the code used for preprocessing, summarizing, and benchmarking embeddings across our functional prediction tasks
+  - `gene_level_benchmark`: code used for benchmarking disease gene prediction (OMIM) and gene function prediction (GO).
+  - `gene_pair_benchmark`: code used for benchmarking genetic interaction (e.g., SL/NG) and transcription factor target (TF) prediction.
+  - `gene_set_benchmark`: code used for benchmarking matching pathways (GO/KEGG) and disease/tissue (OMIM/Brenda).
+  - `preprocess_embedding`: code used for preprocessing embeddings
+  - `summary.py`: code used for summarizing the tested embeddings
 
-The directory structure is inspired by [this article](https://medium.com/outlier-bio-blog/a-quick-guide-to-organizing-data-science-projects-updated-for-2016-4cbb1e6dac71), which is based off of this [classic article](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424) on organizing projects, and makes a good starting point for projects.
 
-## conda environment
-The `env.yml` file should be updated accordingly for projects that use python, so that a new conda environment can be easily installed using the following command:
-```sh
-conda env create -f env.yml
+## Running the scripts
+We recommend using conda for installing all necessary packages. Once conda is installed, get started by creating and activating the virtual environment.
+
+ ```bash
+ conda env create -f env.yml
+ conda activate gene_embed_benchmark 
+ ```
+ To run the gene set benchmarks, first download the ANDES tool:
+```bash 
+git clone https://github.com/ylaboratory/ANDES.git
 ```
+Make sure to navigate to the appropriate directory and follow any additional instructions provided in the [ANDES repository](https://github.com/ylaboratory/ANDES) for setting up and running the tool.
 
-Per usual, to activate the environment:
-```sh
-conda activate new_env_name
+Each folder in the `src` directory contains either a Python (.py) or Jupyter Notebook (.ipynb) file that corresponds to a specific benchmark or analysis. These scripts not only run the benchmarks but also generate plots, which are saved in the `results` folder. To execute the scripts, use the following commands:
+
+For Python files:
+```bash
+python path_to_script/script_name.py
 ```
-
-If the environment is already set up, to update it for new dependencies / resources:
-```sh
-conda env update -n new_env_name -f env.yml --prune
+For Jupyter Notebooks, open them in a Jupyter environment:
+```bash
+jupyter notebook path_to_script/script_name.ipynb
 ```
+Most of the scripts rely on their corresponding helper.py file, which contains helper functions used throughout the analyses. 
 
-Note that the `--prune` flag will tell conda to remove any dependencies that may no longer be required in the environment.
+## Citation

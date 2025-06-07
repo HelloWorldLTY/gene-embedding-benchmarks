@@ -129,7 +129,7 @@ if __name__ == "__main__":
     ) = helper.load_annotations(
         reference_genes,
         gmt_direct="data/gmt/hsa_EXP_ALL_BP_direct.gmt",
-        gmt_prop="data/gmt/hsa_EXP_ALL_BP_prop.gmt",
+        gmt_prop="data/gmt/hsa_EXP_ALL_BP_propagated.gmt",
         slim="data/slim_sets/goslim_agr.tsv",
         obo="data/obo/go.obo",
     )
